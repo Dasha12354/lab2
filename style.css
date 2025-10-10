@@ -1,102 +1,122 @@
-/* ========== Базовые стили ========== */
-* {
-  box-sizing: border-box;
-}
+/* Основные стили */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   margin: 0;
-  color: #222;
-  background: #f7f9fc;
-  line-height: 1.4;
+  background-color: #fcf8f1;
+  color: #5b4636;
 }
 
-/* ========== Шапка ========== */
+/* ======= ШАПКА ======= */
 header {
-  background: linear-gradient(90deg,#7fb7ff,#a2cffe);
-  padding: 20px;
+  background-color: #f5e9dc;
   text-align: center;
+  padding: 30px 20px;
+  border-bottom: 2px solid #e0d2c0;
 }
+
 header h1 {
   margin: 0;
-  color: #03396c;
+  font-size: 2rem;
 }
 
-/* ========== Навигация ========== */
+/* ======= НАВИГАЦИЯ ======= */
 nav {
-  background: #6495ed;
-}
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 8px;
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-}
-nav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
+  background-color: #efe2d1;
 }
 
-/* ========== Контейнер: grid ========== */
+nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav li {
+  margin: 10px 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #5b4636;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #a68463;
+}
+
+/* ======= ОСНОВНОЙ КОНТЕНТ ======= */
 .container {
   display: grid;
-  grid-template-columns: 2fr 1fr; /* слева — контент (статьи), справа — aside */
+  grid-template-columns: 2fr 1fr; /* main и aside */
   gap: 20px;
-  padding: 20px;
-  align-items: start;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 0 20px;
 }
 
-/* Внутри left: статьи — делаем grid 2 колонки на широком экране */
-.articles {
+/* Статьи */
+main {
   display: grid;
   grid-template-columns: 1fr 1fr; /* две статьи рядом */
   gap: 20px;
 }
 
-/* Оформление статьи и aside */
-article, .sidebar {
-  background: #ffffff;
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-}
-article h2 {
-  margin-top: 0;
+article {
+  background-color: #fffaf3;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
 }
 
-/* Подвал */
+/* Боковая панель */
+aside {
+  background-color: #f5e9dc;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* ======= ПОДВАЛ ======= */
 footer {
-  background: #4a148c;
-  color: white;
   text-align: center;
-  padding: 12px;
+  background-color: #f5e9dc;
+  padding: 20px;
+  border-top: 2px solid #e0d2c0;
   margin-top: 20px;
+  font-size: 0.9rem;
 }
 
-/* ========== Медиазапрос: мобильная версия ========== */
+/* ======= МЕДИАЗАПРОС: МОБИЛЬНАЯ ВЕРСИЯ ======= */
 @media (max-width: 768px) {
-  /* 1) Вся основная область (main) — одна колонка:
-     сначала .articles, затем aside (т.е. боковая панель опускается) */
+  /* Всё в одну колонку */
   .container {
-    grid-template-columns: 1fr; /* теперь одна колонка */
-  }
-
-  /* 2) Внутри .articles — делаем одну колонку (статьи одна под другой) */
-  .articles {
     grid-template-columns: 1fr;
   }
 
-  /* 3) Навигация в колонку */
-  nav ul {
-    flex-direction: column;
-    gap: 8px;
-    padding: 12px 0;
+  /* Статьи одна под другой */
+  main {
+    grid-template-columns: 1fr;
   }
 
-  /* чуть меньший шрифт в статьях/aside */
-  article, .sidebar {
+  /* Навигация — в колонку */
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav li {
+    margin: 8px 0;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  article, aside {
     font-size: 15px;
   }
 }
