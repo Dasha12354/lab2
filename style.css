@@ -35,15 +35,25 @@ nav a {
 /* Контентная часть через GRID */
 main {
     display: grid;
-    grid-template-columns: 2fr 1fr; /* 2 колонки: контент + сайдбар */
+    grid-template-columns: 2fr 1fr; /* контент + сайдбар */
     gap: 20px;
     padding: 20px;
 }
+
+/* Статьи */
+.articles {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 article {
     background-color: #f0f8ff;
     padding: 15px;
     border-radius: 10px;
 }
+
+/* Боковая панель */
 aside {
     background-color: #e0ffff;
     padding: 15px;
@@ -59,14 +69,16 @@ footer {
 }
 
 /* 📱 Мобильная версия (медиазапрос) */
-@media (max-width: 600px) {
+@media (max-width: 800px) {
+    /* делаем всё в одну колонку */
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+
     nav ul {
         flex-direction: column;
         align-items: center;
-    }
-
-    main {
-        grid-template-columns: 1fr; /* всё в один столбец */
     }
 
     article, aside {
