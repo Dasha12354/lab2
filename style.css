@@ -1,84 +1,103 @@
-/* Основные стили */
+/* ========== Базовые стили ========== */
+* {
+  box-sizing: border-box;
+}
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  color: #222;
+  background: #f7f9fc;
+  line-height: 1.4;
 }
 
-/* Шапка */
+/* ========== Шапка ========== */
 header {
-    background-color: #a2cffe;
-    text-align: center;
-    padding: 20px;
+  background: linear-gradient(90deg,#7fb7ff,#a2cffe);
+  padding: 20px;
+  text-align: center;
+}
+header h1 {
+  margin: 0;
+  color: #03396c;
 }
 
-/* Меню */
+/* ========== Навигация ========== */
 nav {
-    background-color: #6495ed;
+  background: #6495ed;
 }
 nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    padding: 10px;
-}
-nav li {
-    margin: 0 15px;
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
 }
 nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
 }
 
-/* Контентная часть через GRID */
-main {
-    display: grid;
-    grid-template-columns: 2fr 1fr; /* контент + сайдбар */
-    gap: 20px;
-    padding: 20px;
+/* ========== Контейнер: grid ========== */
+.container {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* слева — контент (статьи), справа — aside */
+  gap: 20px;
+  padding: 20px;
+  align-items: start;
 }
 
-/* Статьи */
+/* Внутри left: статьи — делаем grid 2 колонки на широком экране */
 .articles {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* две статьи рядом */
+  gap: 20px;
 }
 
-article {
-    background-color: #f0f8ff;
-    padding: 15px;
-    border-radius: 10px;
+/* Оформление статьи и aside */
+article, .sidebar {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
-
-/* Боковая панель */
-aside {
-    background-color: #e0ffff;
-    padding: 15px;
-    border-radius: 10px;
+article h2 {
+  margin-top: 0;
 }
 
 /* Подвал */
 footer {
-    background-color: #6495ed;
-    color: white;
-    text-align: center;
-    padding: 10px;
+  background: #4a148c;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  margin-top: 20px;
 }
 
+/* ========== Медиазапрос: мобильная версия ========== */
 @media (max-width: 768px) {
+  /* 1) Вся основная область (main) — одна колонка:
+     сначала .articles, затем aside (т.е. боковая панель опускается) */
   .container {
+    grid-template-columns: 1fr; /* теперь одна колонка */
+  }
+
+  /* 2) Внутри .articles — делаем одну колонку (статьи одна под другой) */
+  .articles {
     grid-template-columns: 1fr;
   }
-  
+
+  /* 3) Навигация в колонку */
   nav ul {
     flex-direction: column;
+    gap: 8px;
+    padding: 12px 0;
   }
-  
-  nav li {
-    margin: 10px 0;
+
+  /* чуть меньший шрифт в статьях/aside */
+  article, .sidebar {
+    font-size: 15px;
   }
 }
 
