@@ -1,56 +1,58 @@
+/* Основные стили */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #f9f9f9;
-    color: #333;
+    padding: 0;
 }
 
-/* Шапка и навигация */
+/* Шапка */
 header {
-    background-color: #7b1fa2;
-    color: white;
+    background-color: #a2cffe;
     text-align: center;
     padding: 20px;
 }
 
+/* Меню */
 nav {
-    background-color: #e1bee7;
+    background-color: #6495ed;
+}
+nav ul {
+    list-style: none;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    margin: 0;
     padding: 10px;
 }
-
+nav li {
+    margin: 0 15px;
+}
 nav a {
+    color: white;
     text-decoration: none;
-    color: #4a148c;
     font-weight: bold;
 }
 
-/* Основная сетка */
+/* Контентная часть через GRID */
 main {
     display: grid;
-    grid-template-columns: 2fr 2fr;
+    grid-template-columns: 2fr 1fr; /* 2 колонки: контент + сайдбар */
     gap: 20px;
     padding: 20px;
 }
-
 article {
-    background: white;
+    background-color: #f0f8ff;
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
-
 aside {
-    background: #f3e5f5;
+    background-color: #e0ffff;
     padding: 15px;
-    margin: 20px;
     border-radius: 10px;
 }
 
+/* Подвал */
 footer {
-    background-color: #4a148c;
+    background-color: #6495ed;
     color: white;
     text-align: center;
     padding: 10px;
@@ -71,3 +73,4 @@ footer {
         font-size: 14px;
     }
 }
+
